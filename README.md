@@ -1,6 +1,6 @@
 # IcePack
 
-> Inha Univ. ICE Student Council Resource Management Service
+> Inha Univ. ICE Student Association Resource Management Service
 
 ## Build Setup
 

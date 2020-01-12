@@ -20,11 +20,12 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
-    '@nuxtjs/google-analytics',
-    '@nuxtjs/pwa'
+    '@nuxtjs/google-gtag',
+    '@nuxtjs/pwa',
+    '@nuxtjs/svg'
   ],
 
-  googleAnalytics: { id: '' },
+  'google-gtag': { id: 'UA-155870748-1' },
 
   manifest: {
     name: NAME,
@@ -37,11 +38,13 @@ export default {
     background_color: THEME_COLOR
   },
 
+  // See https://pwa.nuxtjs.org/modules/meta.html
   meta: {
     name: NAME,
     description: DESCRIPTION,
     appleStatusBarStyle: 'black-translucent',
-    ogHost: `https://int-i.github.io${BASE_URL}`,
+    lang: 'ko',
+    ogHost: `https://inha-ice.github.io${BASE_URL}`,
     ogImage: 'social_preview.png'
   },
 

@@ -6,7 +6,7 @@
         icepack
       </h1>
       <h2 class="subtitle">
-        Inha Univ. ICE Student Council Resource Management Service
+        Inha Univ. ICE Student Association Resource Management Service
       </h2>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">

@@ -1,7 +1,7 @@
 {
   "name": "icepack",
   "version": "1.0.0",
-  "description": "Inha Univ. ICE Student Council Resource Management Service",
+  "description": "Inha Univ. ICE Student Association Resource Management Service",
   "keywords": [
     "inha-university",
     "ice",
@@ -12,8 +12,9 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.9.3",
     "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/google-analytics": "^2.2.3",
+    "@nuxtjs/google-gtag": "^1.0.4",
     "@nuxtjs/pwa": "^3.0.0-beta.19",
+    "@nuxtjs/svg": "^0.1.6",
     "nuxt": "^2.11.0"
   },
   "devDependencies": {
