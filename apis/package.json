@@ -1,0 +1,53 @@
+{
+  "name": "icepack-api",
+  "version": "1.0.0",
+  "description": "Inha Univ. ICE Student Association Resource Management Service",
+  "keywords": [
+    "inha-university",
+    "ice",
+    "engineering",
+    "resource-management",
+    "service"
+  ],
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "morgan": "^1.9.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0",
+    "mocha": "^7.0.1",
+    "nodemon": "^2.0.2",
+    "sqlite3": "^4.1.1",
+    "supertest": "^4.0.2"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon src/server",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "eslint --fix --ignore-path .gitignore .",
+    "start": "cross-env NODE_ENV=production node src/server",
+    "test": "cross-env NODE_ENV=test mocha --exit --timeout 10000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inha-ice/icepack.git"
+  },
+  "contributors": [
+    "Seungjae Park <astro.psj@gmail.com>"
+  ],
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/inha-ice/icepack/issues"
+  },
+  "homepage": "https://github.com/inha-ice/icepack#readme",
+  "private": true
+}
