@@ -1,6 +1,6 @@
 # API
 
-JWT는 `Set-Cookie: access_token=aaa.bbb.ccc` 또는 `Authorization: Bearer aaa.bbb.ccc` 헤더로 전송
+토큰은 `Set-Cookie: access_token=aaa.bbb.ccc` 또는 `Authorization: Bearer aaa.bbb.ccc` 헤더로 전송
 
 ## Summary
 
@@ -54,6 +54,7 @@ Output:
   lockers: [
     {
       id: 0, // locker id
+      location: '하이테크센터 1층',
       userId: 00000000, // nullable
       note: '', // nullable
       rentedAt: '2020-01-01 00:00:00', // nullable
@@ -73,11 +74,36 @@ Output:
 {
   message: 'success',
   locker: {
+    location: '하이테크센터 1층',
     userId: 00000000, // nullable
     note: '', // nullable
     rentedAt: '2020-01-01 00:00:00', // nullable
     returnedAt: '2020-01-01 00:00:00', // nullable
   },
+}
+```
+
+### PATCH /lockers/:id
+
+(Manager Auth Required) 사물함 현황 수정
+
+Input:
+
+```js
+{
+  location: '하이테크센터 1층',
+  userId: 00000000, // nullable
+  note: '', // nullable
+  rentedAt: '2020-01-01 00:00:00', // nullable
+  returnedAt: '2020-01-01 00:00:00', // nullable
+}
+```
+
+Output:
+
+```js
+{
+  message: 'success',
 }
 ```
 
@@ -137,6 +163,7 @@ Output:
   message: 'success',
   resources: {
     id: 0, // resource id
+    name: '보조배터리 C타입 1',
     userId: 00000000, // nullable
     note: '', // nullable
     rentedAt: '2020-01-01 00:00:00', // nullable
@@ -155,11 +182,36 @@ Output:
 {
   message: 'success',
   resource: {
+    name: '보조배터리 C타입 1',
     userId: 00000000, // nullable
     note: '', // nullable
     rentedAt: '2020-01-01 00:00:00', // nullable
     returnedAt: '2020-01-01 00:00:00', // nullable
   },
+}
+```
+
+### PATCH /resources/:id
+
+(Manager Auth Required) 복지물품 현황 수정
+
+Input:
+
+```js
+{
+  name: '보조배터리 C타입 1',
+  userId: 00000000, // nullable
+  note: '', // nullable
+  rentedAt: '2020-01-01 00:00:00', // nullable
+  returnedAt: '2020-01-01 00:00:00', // nullable
+}
+```
+
+Output:
+
+```js
+{
+  message: 'success',
 }
 ```
 
