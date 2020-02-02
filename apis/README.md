@@ -292,8 +292,8 @@ Output:
 {
   message: 'success',
   user: {
-    paid: 80000, // nullable
-    refunded: 80000, // nullable
+    paid: 80000,
+    refunded: 0,
     note: '', // nullable
     paidAt: '2020-01-01 00:00:00', // nullable
     refundedAt: '2020-01-01 00:00:00', // nullable
