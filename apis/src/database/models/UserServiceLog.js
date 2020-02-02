@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const UserServiceLog = sequelize.define('UserServiceLog', {
     id: {
-      type: DataTypes.BIGINT.UNSIGNED,
+      type: DataTypes.BIGINT,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
