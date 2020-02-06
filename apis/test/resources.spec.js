@@ -57,7 +57,7 @@ describe('route:resources', () => {
   context('GET /resources/:id', () => {
     it('복지물품 현황 조회 성공', (done) => {
       managerAgent
-        .get('/resources/0')
+        .get('/resources/1')
         .expect(200)
         .end((err, res) => {
           if (err) {
@@ -80,28 +80,28 @@ describe('route:resources', () => {
 
     it('복지물품 현황 조회 실패: 인증없음', (done) => {
       request(app)
-        .get('/resources/0')
+        .get('/resources/1')
         .expect(401)
         .end(hasErrorMessage(done));
     });
 
     it('복지물품 현황 조회 실패: 권한없음', (done) => {
       userAgent
-        .get('/resources/0')
+        .get('/resources/1')
         .expect(403)
         .end(hasErrorMessage(done));
     });
 
     it('복지물품 현황 조회 실패: 유효하지 않은 아이디', (done) => {
       managerAgent
-        .get('/users/id')
+        .get('/resources/id')
         .expect(400)
         .end(hasErrorMessage(done));
     });
 
     it('복지물품 현황 조회 실패: 존재하지 않는 복지물품', (done) => {
       managerAgent
-        .get('/users/10000')
+        .get('/resources/10000')
         .expect(404)
         .end(hasErrorMessage(done));
     });
@@ -110,7 +110,7 @@ describe('route:resources', () => {
   context('PATCH /resources/:id', () => {
     it('복지물품 현황 수정 성공', (done) => {
       managerAgent
-        .patch('/resources/0')
+        .patch('/resources/1')
         .send({ note: '고장' })
         .expect(200)
         .end(isSuccessMessage(done));
@@ -118,7 +118,7 @@ describe('route:resources', () => {
 
     it('복지물품 현황 수정 실패: 인증없음', (done) => {
       request(app)
-        .patch('/resources/0')
+        .patch('/resources/1')
         .send({ note: '고장' })
         .expect(401)
         .end(hasErrorMessage(done));
@@ -126,7 +126,7 @@ describe('route:resources', () => {
 
     it('복지물품 현황 수정 실패: 권한없음', (done) => {
       userAgent
-        .patch('/resources/0')
+        .patch('/resources/1')
         .send({ note: '고장' })
         .expect(403)
         .end(hasErrorMessage(done));
@@ -134,7 +134,7 @@ describe('route:resources', () => {
 
     it('복지물품 현황 수정 실패: 유효하지 않은 아이디', (done) => {
       managerAgent
-        .patch('/users/id')
+        .patch('/resources/id')
         .send({ note: '고장' })
         .expect(400)
         .end(hasErrorMessage(done));
@@ -142,7 +142,7 @@ describe('route:resources', () => {
 
     it('복지물품 현황 수정 실패: 유효하지 않은 입력', (done) => {
       managerAgent
-        .patch('/users/0')
+        .patch('/resources/0')
         .send({ userId: '고장' })
         .expect(400)
         .end(hasErrorMessage(done));
@@ -150,7 +150,7 @@ describe('route:resources', () => {
 
     it('복지물품 현황 수정 실패: 존재하지 않는 복지물품', (done) => {
       managerAgent
-        .patch('/users/10000')
+        .patch('/resources/10000')
         .send({ note: '고장' })
         .expect(404)
         .end(hasErrorMessage(done));
@@ -160,7 +160,7 @@ describe('route:resources', () => {
   context('POST /resources/:id/rent', () => {
     it('복지물품 대여 성공', (done) => {
       managerAgent
-        .post('/resources/0/rent')
+        .post('/resources/1/rent')
         .send({ userId: 12345678 })
         .expect(200)
         .end(isSuccessMessage(done));
@@ -168,7 +168,7 @@ describe('route:resources', () => {
 
     it('복지물품 대여 실패: 인증없음', (done) => {
       request(app)
-        .post('/resources/0/rent')
+        .post('/resources/1/rent')
         .send({ userId: 12345678 })
         .expect(401)
         .end(hasErrorMessage(done));
@@ -176,7 +176,7 @@ describe('route:resources', () => {
 
     it('복지물품 대여 실패: 권한없음', (done) => {
       userAgent
-        .post('/resources/0/rent')
+        .post('/resources/1/rent')
         .send({ userId: 12345678 })
         .expect(403)
         .end(hasErrorMessage(done));
@@ -192,7 +192,7 @@ describe('route:resources', () => {
 
     it('복지물품 대여 실패: 유효하지 않은 입력', (done) => {
       managerAgent
-        .post('/resources/0/rent')
+        .post('/resources/1/rent')
         .send({ userId: 'user' })
         .expect(400)
         .end(hasErrorMessage(done));
@@ -210,21 +210,21 @@ describe('route:resources', () => {
   context('POST /resources/:id/return', () => {
     it('복지물품 반납 성공', (done) => {
       managerAgent
-        .post('/resources/0/return')
+        .post('/resources/1/return')
         .expect(200)
         .end(isSuccessMessage(done));
     });
 
     it('복지물품 반납 실패: 인증없음', (done) => {
       request(app)
-        .post('/resources/0/return')
+        .post('/resources/1/return')
         .expect(401)
         .end(hasErrorMessage(done));
     });
 
     it('복지물품 반납 실패: 권한없음', (done) => {
       userAgent
-        .post('/resources/0/return')
+        .post('/resources/1/return')
         .expect(403)
         .end(hasErrorMessage(done));
     });

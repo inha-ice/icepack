@@ -11,6 +11,25 @@ const LOGIN_URL = new URL('/auth', AUTH_SERVER);
 const SIGNUP_URL = new URL('/users', AUTH_SERVER);
 
 /**
+ * 사용자 아이디를 이용해 사용자 정보를 가져옵니다.
+ * @async
+ * @param {string} token 토큰
+ * @param {number} userId 사용자 아이디
+ * @returns {Promise.<Object>} 사용자 정보
+ * @throws {StatusCodeError}
+ * @throws {RequestError}
+ */
+const getUser = async (token, userId) => {
+  const { user } = await requestPromise({
+    method: 'GET',
+    uri: new URL(`/users/${userId}`, AUTH_SERVER),
+    auth: { bearer: token },
+    json: true,
+  });
+  return user;
+};
+
+/**
  * 아이디와 비밀번호로 통합인증서버에 로그인하고 토큰을 반환합니다.
  * @async
  * @param {string} id 아이디
@@ -59,7 +78,7 @@ const signUp = async (id, name, password) => {
  */
 const verifyToken = async (token) => {
   const { user } = await requestPromise({
-    method: 'POST',
+    method: 'GET',
     uri: GET_ME_URL,
     auth: { bearer: token },
     json: true,
@@ -68,6 +87,7 @@ const verifyToken = async (token) => {
 };
 
 module.exports = {
+  getUser,
   login,
   signUp,
   verifyToken,

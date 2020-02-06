@@ -14,8 +14,8 @@ const verifyAuth = (req, _, next) => {
   if (token) {
     req.token = token;
     authorice.verifyToken(token)
-      .then((user) => {
-        req.user = user;
+      .then((userPayload) => {
+        req.userPayload = userPayload;
         next();
       }).catch(() => {
         next(new UnauthorizedError('Invalid token found'));
@@ -31,7 +31,7 @@ const verifyAuth = (req, _, next) => {
  * @returns {Function} 권한확인 미들웨어
  */
 const verifyAuthLevel = (level) => (req, _, next) => {
-  if (req.user.level & level) { // bit flag comparison
+  if (req.userPayload.level & level) { // bit flag comparison
     next();
   } else {
     next(new ForbiddenError('Permission denied'));

@@ -182,6 +182,7 @@ Output:
 {
   message: 'success',
   resource: {
+    id: 0,
     name: '보조배터리 C타입 1',
     userId: 00000000, // nullable
     note: '', // nullable
