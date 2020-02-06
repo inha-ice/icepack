@@ -182,6 +182,7 @@ Output:
 {
   message: 'success',
   resource: {
+    id: 0,
     name: '보조배터리 C타입 1',
     userId: 00000000, // nullable
     note: '', // nullable
@@ -292,8 +293,8 @@ Output:
 {
   message: 'success',
   user: {
-    paid: 80000, // nullable
-    refunded: 80000, // nullable
+    paid: 80000,
+    refunded: 0,
     note: '', // nullable
     paidAt: '2020-01-01 00:00:00', // nullable
     refundedAt: '2020-01-01 00:00:00', // nullable

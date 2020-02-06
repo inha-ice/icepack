@@ -1,6 +1,7 @@
 const ForbiddenError = require('../errors/ForbiddenError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
-const { extractTokenFromCookie, extractTokenFromHeader, verifyToken } = require('../utils/token');
+const { extractTokenFromCookie, extractTokenFromHeader } = require('../utils/token');
+const { authorice } = require('../../lib');
 
 /**
  * 쿠키 또는 헤더에 유효한 토큰이 포함되어있는지 확인합니다.
@@ -12,11 +13,13 @@ const verifyAuth = (req, _, next) => {
   const token = extractTokenFromCookie(req) || extractTokenFromHeader(req);
   if (token) {
     req.token = token;
-    verifyToken(token)
-      .then((user) => {
-        req.user = user;
+    authorice.verifyToken(token)
+      .then((userPayload) => {
+        req.userPayload = userPayload;
         next();
-      }).catch(next);
+      }).catch(() => {
+        next(new UnauthorizedError('Invalid token found'));
+      });
   } else {
     next(new UnauthorizedError('Cannot find the token'));
   }
@@ -28,7 +31,7 @@ const verifyAuth = (req, _, next) => {
  * @returns {Function} 권한확인 미들웨어
  */
 const verifyAuthLevel = (level) => (req, _, next) => {
-  if (req.user.level & level) { // bit flag comparison
+  if (req.userPayload.level & level) { // bit flag comparison
     next();
   } else {
     next(new ForbiddenError('Permission denied'));

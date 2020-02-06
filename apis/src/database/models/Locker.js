@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Locker = sequelize.define('Locker', {
     id: {
-      type: DataTypes.SMALLINT.UNSIGNED,
+      type: DataTypes.SMALLINT,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,

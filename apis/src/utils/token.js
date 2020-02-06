@@ -1,13 +1,3 @@
-const dotenv = require('dotenv');
-const request = require('request');
-const { URL } = require('url');
-const UnauthorizedError = require('../errors/UnauthorizedError');
-
-dotenv.config();
-
-const { AUTH_SERVER } = process.env;
-
-const AUTH_SERVER_URL = new URL('/auth/me', AUTH_SERVER);
 const SCHEMA_REGEX = /^(?:Bearer )?([A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*)$/;
 
 /**
@@ -38,30 +28,7 @@ const extractTokenFromHeader = (req) => {
   return null;
 };
 
-/**
- * 토큰의 무결성을 확인하고 토큰정보를 반환합니다.
- * @async
- * @param {string} token
- * @returns {Promise.<Object>} User model payload
- * @throws {TokenVerifyError} 토큰 인증 실패
- */
-const verifyToken = (token) => new Promise((resolve, reject) => {
-  request({
-    url: AUTH_SERVER_URL,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }, (err, res, body) => {
-    if (!err && res.statusCode === 200) {
-      resolve(body.user);
-    } else {
-      reject(new UnauthorizedError('Invalid token found'));
-    }
-  });
-});
-
 module.exports = {
   extractTokenFromCookie,
   extractTokenFromHeader,
-  verifyToken,
 };
