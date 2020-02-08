@@ -10,22 +10,22 @@
     "service"
   ],
   "dependencies": {
-    "@nuxtjs/axios": "^5.9.3",
+    "@nuxtjs/axios": "^5.9.5",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/google-gtag": "^1.0.4",
-    "@nuxtjs/pwa": "^3.0.0-beta.19",
-    "@nuxtjs/svg": "^0.1.6",
+    "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "dotenv": "^8.2.0",
     "nuxt": "^2.11.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
     "@nuxtjs/eslint-module": "^1.1.0",
-    "@nuxtjs/stylelint-module": "^3.1.1",
+    "@nuxtjs/stylelint-module": "^3.2.1",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
     "eslint-plugin-nuxt": "^0.5.0",
     "push-dir": "^0.4.1",
-    "stylelint": "^12.0.1",
+    "stylelint": "^13.0.0",
     "stylelint-config-recess-order": "^2.0.3",
     "stylelint-config-standard": "^19.0.0"
   },
@@ -34,8 +34,8 @@
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "dev": "nuxt",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore . & stylelint **/*.vue",
-    "lint:fix": "eslint --ext .js,.vue --fix --ignore-path .gitignore . & stylelint --fix **/*.vue",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --ignore-pattern apis . & stylelint **/*.vue",
+    "lint:fix": "eslint --ext .js,.vue --fix --ignore-path .gitignore --ignore-pattern apis . & stylelint --fix **/*.vue",
     "start": "nuxt start"
   },
   "repository": {
